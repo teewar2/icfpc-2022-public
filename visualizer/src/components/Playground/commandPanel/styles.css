@@ -1,0 +1,26 @@
+.commandPanel {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.commandPanel__item {
+  background-color: lightgray;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+}
+
+.commandPanel__active-item {
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+  background-color: red;
+  cursor: pointer;
+}
+
+.commandPanel__item-with-color {
+  display: flex;
+  gap: 10px;
+}
