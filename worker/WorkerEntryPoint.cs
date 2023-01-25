@@ -99,39 +99,7 @@ public static class WorkerEntryPoint
                     const string solverId = "GridGuidedPainter";
                     var score = res.Score;
 
-                    long prevBestScore = -1;
-                    try
-                    {
-                        prevBestScore = SolutionRepo.GetBestSolutionBySolverId(problemId, solverId).GetAwaiter().GetResult()!.ScoreEstimated;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-
-                    if (score < prevBestScore)
-                        Console.WriteLine($"BEST! {localCurrent + 1}/{works.Length} submitted score={prevBestScore}->{score} problem={problemId} rows={rows} cols={cols} o={w.orientation} prep={w.swapperPreprocessorN}");
-                    else
-                        Console.WriteLine($"{localCurrent + 1}/{works.Length} submitted score={prevBestScore}->{score} problem={problemId} rows={rows} cols={cols} o={w.orientation} prep={w.swapperPreprocessorN}");
-
-
-                    // File.WriteAllText(Path.Combine(FileHelper.FindDirectoryUpwards("worker-solutions"), $"{problemId}-grid-{rows}-{cols}-{w.orientation}.txt"), res.Moves.StrJoin("\n"));
-
-                    // if (score < prevBestScore)
-                        try
-                        {
-                            SolutionRepo.Submit(
-                                new ContestSolution(
-                                    problemId,
-                                    score,
-                                    res.Moves.StrJoin("\n"),
-                                    new SolverMeta { Description = $"{rows}*{cols} colTolerance={res.ColorTolerance} orientation={w.orientation} prep={w.swapperPreprocessorN}" },
-                                    solverId));
-                        }
-                        catch(Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
+                    Console.WriteLine($"Solver {solverId} achieved score {score} with our solution!");
                 }
             }));
         }
