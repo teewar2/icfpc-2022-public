@@ -80,7 +80,7 @@ public static class WorkerEntryPoint
         var current = 0;
 
         var tasks = new List<Task>();
-        for (int i = 0; i < 96; i++)
+        for (int i = 0; i < 8; i++)
         {
             tasks.Add(Task.Run(() =>
             {
