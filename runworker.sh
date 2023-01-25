@@ -1,1 +1,1 @@
-dotnet run --project worker/ > workerOutput
+dotnet run --project worker/ > workerOutput 
